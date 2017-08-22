@@ -1,0 +1,2 @@
+# FlashAndCreatejs2012
+该教程是我在2012年录制的讲解Createjs的视频教程
