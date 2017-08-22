@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+
+</head>
+<body>
+<label>a:</label>
+<input id="aInput" type="text"><br>
+<label>b:</label>
+<input id="bInput" type="text"><br>
+<button id="submitBtn">提交</button><br>
+<div id="resultDiv"></div>
+<div id="msgDiv" style="color: #FF0000"></div>
+
+<script type="text/javascript">
+
+var SERVER_URL="server.jsp";
+
+$('#submitBtn').click(function(){
+	
+	var aStr = $('#aInput').attr('value');
+	var bStr = $('#bInput').attr('value');
+	
+	if(aStr==null||aStr==""){
+		$('#msgDiv').text("参数a不能为空");
+		return;
+	}
+	if(bStr==null||bStr==""){
+		$('#msgDiv').text("参数b不能为空");
+		return;
+	}
+	
+	$('#msgDiv').text("正在通信...");
+	
+	/* $.get(SERVER_URL,{a:aStr,b:bStr},function(data){
+		$('#resultDiv').text(data);
+		
+		$('#msgDiv').empty();
+	}).error(function(){
+		$('#msgDiv').text("通信失败");
+	}); */
+	
+	$.post(SERVER_URL,{a:aStr,b:bStr},function(data){
+		$('#resultDiv').text(data);
+		
+		$('#msgDiv').empty();
+	}).error(function(){
+		$('#msgDiv').text("通信失败");
+	});
+	
+});
+
+</script>
+</body>
+</html>

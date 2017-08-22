@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CreateJS export from PlaySound</title>
+
+<script src="http://code.createjs.com/easeljs-0.5.0.min.js"></script>
+<script src="http://code.createjs.com/tweenjs-0.3.0.min.js"></script>
+<script src="http://code.createjs.com/movieclip-0.5.0.min.js"></script>
+<script src="http://code.createjs.com/preloadjs-0.2.0.min.js"></script>
+<script src="http://code.createjs.com/soundjs-0.3.0.min.js"></script>
+<script src="PlaySound.js"></script>
+
+<script>
+var canvas, stage, exportRoot;
+
+function init() {
+	canvas = document.getElementById("canvas");
+
+	var manifest = [
+		{src:"sounds/HélèneRollesCopaincopain.mp3", id:"HélèneRollesCopaincopain"}
+	];
+
+	var loader = new createjs.PreloadJS(false);
+	loader.installPlugin(createjs.SoundJS);
+	loader.onComplete = handleComplete;
+	loader.loadManifest(manifest);
+}
+
+function handleComplete() {
+	exportRoot = new lib.PlaySound();
+
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.update();
+
+	createjs.Ticker.setFPS(24);
+	createjs.Ticker.addListener(stage);
+}
+
+function playSound(name, loop) {
+	createjs.SoundJS.play(name, createjs.SoundJS.INTERRUPT_EARLY, 0, 0, loop);
+}
+</script>
+</head>
+
+<body onload="init();" style="background-color:#D4D4D4">
+	<canvas id="canvas" width="550" height="400" style="background-color:#ffffff"></canvas>
+</body>
+</html>

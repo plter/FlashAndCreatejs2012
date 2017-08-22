@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+
+</head>
+<body>
+
+<div id="main">
+Loading...
+</div>
+
+<script type="text/javascript">
+
+$.getScript("app.js1").fail(function(){
+	$('#main').text("应用程序加载失败");
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CreateJS export from UsingLib</title>
+
+<script src="easeljs-0.5.0.min.js"></script>
+<script src="tweenjs-0.3.0.min.js"></script>
+<script src="movieclip-0.5.0.min.js"></script>
+<script src="UsingLib.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+<script>
+var canvas, stage, root;
+
+function init() {
+	canvas = document.getElementById("canvas");
+	root = new lib.UsingLib();
+
+	stage = new createjs.Stage(canvas);
+	stage.addChild(root);
+	stage.update();
+
+	createjs.Ticker.setFPS(24);
+	createjs.Ticker.addListener(stage);
+	
+	pageInit();
+}
+</script>
+</head>
+
+<body onload="init();" style="background-color:#D4D4D4">
+	<canvas id="canvas" width="550" height="400" style="background-color:#ffffff"></canvas>
+</body>
+</html>
